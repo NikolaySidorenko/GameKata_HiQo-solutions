@@ -7,10 +7,22 @@ namespace GameUnitTest
     public class BowlingUnitTests
     {
         private readonly Game _game=new Game();
-        
-        [TestMethod]
-        public void TestMethod1()
+       
+        private void RollMany(int rollsCount, int point)
         {
+            for (int i = 0; i < rollsCount; i++)
+            {
+                _game.Roll(point);
+            }
+        }
+        
+        
+
+        [TestMethod]
+        public void TestPerfectGame()
+        {
+            RollMany(12,10);
+            Assert.AreEqual(300,_game.GetTotalScore());
         }
     }
 }
